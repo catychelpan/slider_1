@@ -1,32 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-body{
+@import url('https://fonts.cdnfonts.com/css/neutral-face');
+
+body {
+    font-family: 'Neutral Face', sans-serif;
+    background-color: black;
+    color: white;
     margin: 0;
-    background-color: #000;
-    color: #eee;
-    font-family: Poppins;
     font-size: 12px;
 }
-a{
-    text-decoration: none;
-}
-header{
-    width: 1140px;
-    max-width: 80%;
-    margin: auto;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 100;
-}
-header a{
-    color: #eee;
-    margin-right: 40px;
-}
+
+
 /* carousel */
 .carousel{
     height: 100vh;
-    margin-top: -50px;
     width: 100vw;
     overflow: hidden;
     position: relative;
@@ -40,11 +25,38 @@ header a{
 .carousel .list .item img{
     width: 100%;
     height: 100%;
+    
+    
+}
+
+
+
+.back {
+    filter: grayscale(100%);
     object-fit: cover;
 }
+
+.showcase-item{
+    margin-top: 30px;
+    width: 300px;
+    height: 400px ;
+    background-color: rgba(255, 255, 255, 0.71);
+    border-radius: 30px;
+    padding: 30px;
+}
+
+.bookmark{
+    
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+}
+
+
 .carousel .list .item .content{
     position: absolute;
-    top: 20%;
+    top: 10%;
     width: 1140px;
     max-width: 80%;
     left: 50%;
@@ -54,31 +66,19 @@ header a{
     color: #fff;
     text-shadow: 0 5px 10px #0004;
 }
-.carousel .list .item .author{
-    font-weight: bold;
-    letter-spacing: 10px;
-}
-.carousel .list .item .title,
-.carousel .list .item .topic{
+
+.carousel .list .item .title{
     font-size: 5em;
     font-weight: bold;
     line-height: 1.3em;
 }
-.carousel .list .item .topic{
-    color: #f1683a;
-}
-.carousel .list .item .buttons{
-    display: grid;
-    grid-template-columns: repeat(2, 130px);
-    grid-template-rows: 40px;
-    gap: 5px;
-    margin-top: 20px;
-}
+
+
 .carousel .list .item .buttons button{
     border: none;
     background-color: #eee;
     letter-spacing: 3px;
-    font-family: Poppins;
+    font-family: 'Neutral Face';
     font-weight: 500;
 }
 .carousel .list .item .buttons button:nth-child(2){
@@ -156,36 +156,30 @@ header a{
 
 /* animation text in first item */
 
-.carousel .list .item:nth-child(1) .content .author,
+
 .carousel .list .item:nth-child(1) .content .title,
-.carousel .list .item:nth-child(1) .content .topic,
+
 .carousel .list .item:nth-child(1) .content .des,
-.carousel .list .item:nth-child(1) .content .buttons
+.carousel .list .item:nth-child(1) .content .showcase-item,
+.carousel.prev .list .item:nth-child(1) .content .bookmark
 {
     transform: translateY(50px);
     filter: blur(20px);
     opacity: 0;
+    object-fit: contain;
     animation: showContent .5s 1s linear 1 forwards;
+    
 }
 @keyframes showContent{
     to{
         transform: translateY(0px);
         filter: blur(0px);
+        object-fit: contain;
         opacity: 1;
+        
     }
 }
-.carousel .list .item:nth-child(1) .content .title{
-    animation-delay: 1.2s!important;
-}
-.carousel .list .item:nth-child(1) .content .topic{
-    animation-delay: 1.4s!important;
-}
-.carousel .list .item:nth-child(1) .content .des{
-    animation-delay: 1.6s!important;
-}
-.carousel .list .item:nth-child(1) .content .buttons{
-    animation-delay: 1.8s!important;
-}
+
 /* create animation when next click */
 .carousel.next .list .item:nth-child(1) img{
     width: 150px;
@@ -196,15 +190,23 @@ header a{
     border-radius: 30px;
     animation: showImage .5s linear 1 forwards;
 }
+
+
 @keyframes showImage{
+
     to{
         bottom: 0;
         left: 0;
         width: 100%;
         height: 100%;
         border-radius: 0;
+        
+        
     }
+
 }
+
+
 
 .carousel.next .thumbnail .item:nth-last-child(1){
     overflow: hidden;
@@ -282,11 +284,11 @@ header a{
 .carousel.prev .arrows button{
     pointer-events: none;
 }
-.carousel.prev .list .item:nth-child(2) .content .author,
+
 .carousel.prev .list .item:nth-child(2) .content .title,
-.carousel.prev .list .item:nth-child(2) .content .topic,
+
 .carousel.prev .list .item:nth-child(2) .content .des,
-.carousel.prev .list .item:nth-child(2) .content .buttons
+.carousel.prev .list .item:nth-child(2) .content .showcase-item
 {
     animation: contentOut 1.5s linear 1 forwards!important;
 }
@@ -296,6 +298,7 @@ header a{
         transform: translateY(-150px);
         filter: blur(20px);
         opacity: 0;
+       
     }
 }
 @media screen and (max-width: 678px) {
